@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrasi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5" style="max-width: 450px;">
+    <h3 class="text-center">Registrasi Akun</h3>
+
+    <!-- FORM REGISTRASI -->
+<form id="registerForm">
+    <input type="text" id="fullname" class="form-control mb-3" placeholder="Nama Lengkap">
+    <input type="email" id="email" class="form-control mb-3" placeholder="Email">
+    <input type="text" id="regUsername" class="form-control mb-3" placeholder="Username">
+    <input type="password" id="regPassword" class="form-control mb-3" placeholder="Password">
+
+    <button type="submit" class="btn btn-success w-100">Daftar</button>
+</form>
+
+</div>
+
+
+
+<!-- SCRIPT REGISTRASI -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const form = document.getElementById("registerForm");
+    if (!form) return;
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let fullname = document.getElementById("fullname").value;
+        let email = document.getElementById("email").value;
+        let username = document.getElementById("regUsername").value;
+        let password = document.getElementById("regPassword").value;
+
+        if (!fullname || !email || !username || !password) {
+            alert("Semua data harus diisi!");
+            return;
+        }
+
+        const userData = {
+            fullname,
+            email,
+            username,
+            password
+        };
+
+        localStorage.setItem("user", JSON.stringify(userData));
+
+        alert("Registrasi Berhasil!");
+        window.location.href = "login.html";
+    });
+
+});
+</script>
+
+
+</body>
+
+<footer class="bg-dark text-white text-center py-2 mt-4">
+    © 241010008_Erlangga Aditya Delfiana_TRPL
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>
